@@ -4,7 +4,10 @@ import {Route, Switch, Router} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import history from './history'
 import {Main, Login, Signup, UserHome} from './components'
-import {me} from './store'
+
+import instructor from './modules/instructor'
+import learners from './modules/learners'
+import user from './modules/user'
 
 /**
  * COMPONENT
@@ -23,6 +26,8 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are available to all visitors */}
             <Route path="/login" component={Login} />
+            <Route path="/instructor" component={instructor.containers}/>
+            <Route path="/learners" component={learners.containers}/>
             <Route path="/signup" component={Signup} />
             {
               isLoggedIn &&
@@ -54,7 +59,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     loadInitialData () {
-      dispatch(me())
+      dispatch(user.actions.me())
     }
   }
 }

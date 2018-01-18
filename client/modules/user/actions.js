@@ -1,26 +1,12 @@
+import * as action from './actionTypes'
 import axios from 'axios'
-import history from '../history'
-
-/**
- * ACTION TYPES
- */
-const GET_USER = 'GET_USER'
-const REMOVE_USER = 'REMOVE_USER'
-
-/**
- * INITIAL STATE
- */
+import history from '../../history'
 const defaultUser = {}
 
-/**
- * ACTION CREATORS
- */
-const getUser = user => ({type: GET_USER, user})
-const removeUser = () => ({type: REMOVE_USER})
+export const getUser = user => ({type: action.GET_USER, user})
+export const removeUser = () => ({type: action.REMOVE_USER})
 
-/**
- * THUNK CREATORS
- */
+
 export const me = () =>
   dispatch =>
     axios.get('/auth/me')
@@ -47,17 +33,3 @@ export const logout = () =>
         history.push('/login')
       })
       .catch(err => console.log(err))
-
-/**
- * REDUCER
- */
-export default function (state = defaultUser, action) {
-  switch (action.type) {
-    case GET_USER:
-      return action.user
-    case REMOVE_USER:
-      return defaultUser
-    default:
-      return state
-  }
-}

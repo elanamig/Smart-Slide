@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import {logout} from '../store'
-
+import user from '../modules/user'
 /**
  * COMPONENT
  *  The Main component is our 'picture frame' - it displays the navbar and anything
@@ -11,6 +11,7 @@ import {logout} from '../store'
  *  rendered out by the component's `children`.
  */
 const Main = (props) => {
+  
   const {children, handleClick, isLoggedIn} = props
 
   return (
@@ -49,7 +50,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     handleClick () {
-      dispatch(logout())
+      dispatch(user.action.logout())
     }
   }
 }

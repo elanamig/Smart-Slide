@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import {auth} from '../store'
+import user from '../modules/user'
 
 /**
  * COMPONENT
@@ -60,7 +60,7 @@ const mapDispatch = (dispatch) => {
       const formName = evt.target.name
       const email = evt.target.email.value
       const password = evt.target.password.value
-      dispatch(auth(email, password, formName))
+      dispatch(user.actions.auth(email, password, formName))
     }
   }
 }

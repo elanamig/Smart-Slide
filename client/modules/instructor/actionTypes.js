@@ -1,0 +1,1 @@
+export const GET_INSTRUCTOR = 'GET_INSTRUCTOR'
